@@ -52,5 +52,11 @@
         "suite": "Stabilization_Test_Euromundo",
         "release": "N/A",
         "path": "executions/20260109_170816/Report_PMO/Report_PMO_All.html"
+    },
+    {
+        "date": "2026-01-14 13:58:25",
+        "suite": "stabilization_test_2ADL_1CNN",
+        "release": "6.26.113.13",
+        "path": "executions/20260114_135119/Report_PMO/Report_PMO_All.html"
     }
 ]
