@@ -1,0 +1,20 @@
+name: Run Katalon Test Suite
+
+on:
+  workflow_dispatch:
+    inputs:
+      suite:
+        description: "Test Suite a ejecutar"
+        required: true
+        default: "Stabilization_Testing"
+
+jobs:
+  run-katalon:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Mostrar suite seleccionada
+        run: echo "Suite seleccionada: ${{ github.event.inputs.suite }}"
