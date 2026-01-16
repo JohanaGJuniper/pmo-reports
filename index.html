@@ -38,7 +38,7 @@ p.subtitle{margin-top:0;color:#555}
   margin-bottom:12px
 }
 
-a.btn{
+a.btn, button.btn{
   display:inline-block;
   margin-right:10px;
   margin-top:6px;
@@ -46,8 +46,11 @@ a.btn{
   border-radius:8px;
   text-decoration:none;
   font-weight:600;
-  font-size:14px
+  font-size:14px;
+  border:none;
+  cursor:pointer
 }
+
 .btn.final{
   background:#2F3A56;
   color:white
@@ -55,6 +58,16 @@ a.btn{
 .btn.all{
   background:#E0E7FF;
   color:#1a2b49
+}
+
+/* 🔁 BOTÓN RE-EJECUTAR */
+.btn.rerun{
+  background:#E8F5E9;
+  color:#1B5E20;
+  border:1px solid #C8E6C9;
+}
+.btn.rerun:hover{
+  background:#C8E6C9;
 }
 
 hr{
@@ -77,7 +90,7 @@ hr{
 <body>
 
 <div style="margin-bottom:20px">
-  <img src="assets/images/juniper-logo.png"
+  <img src="./assets/images/juniper-logo.png"
        alt="Juniper Logo"
        style="max-width:180px;margin-bottom:10px">
 </div>
@@ -129,12 +142,23 @@ fetch('executions/executions.json')
           <b>Suite:</b> ${latest.suite}<br>
           <b>Release:</b> ${latest.release || 'N/A'}
         </div>
-        <a class="btn final" href="${latest.path.replace('Report_PMO_All.html','Report_PMO_Final.html')}" target="_blank">
+
+        <a class="btn final"
+           href="${latest.path.replace('Report_PMO_All.html','Report_PMO_Final.html')}"
+           target="_blank">
           📘 Reporte FINAL
         </a>
-        <a class="btn all" href="${latest.path}" target="_blank">
+
+        <a class="btn all"
+           href="${latest.path}"
+           target="_blank">
           📂 Reporte ALL
         </a>
+
+        <button class="btn rerun"
+                onclick="showRerunInfo('${latest.suite}')">
+          🔁 Re-ejecutar suite
+        </button>
       </div>
     `;
 
@@ -152,12 +176,23 @@ fetch('executions/executions.json')
               <b>Suite:</b> ${exec.suite}<br>
               <b>Release:</b> ${exec.release || 'N/A'}
             </div>
-            <a class="btn final" href="${exec.path.replace('Report_PMO_All.html','Report_PMO_Final.html')}" target="_blank">
+
+            <a class="btn final"
+               href="${exec.path.replace('Report_PMO_All.html','Report_PMO_Final.html')}"
+               target="_blank">
               📘 Final
             </a>
-            <a class="btn all" href="${exec.path}" target="_blank">
+
+            <a class="btn all"
+               href="${exec.path}"
+               target="_blank">
               📂 All
             </a>
+
+            <button class="btn rerun"
+                    onclick="showRerunInfo('${exec.suite}')">
+              🔁 Re-ejecutar suite
+            </button>
           </div>
         `;
       });
@@ -182,6 +217,18 @@ fetch('executions/executions.json')
 
   })
   .catch(err => console.error('Error cargando executions.json', err));
+
+/* 🔁 INFO RE-EJECUCIÓN */
+function showRerunInfo(suite){
+  alert(
+    'Para re-ejecutar la suite:\n\n' +
+    '1️⃣ Abre Katalon Studio\n' +
+    '2️⃣ Selecciona la suite:\n' +
+    suite + '\n' +
+    '3️⃣ Ejecuta normalmente\n\n' +
+    '⚠️ La ejecución automática se habilita vía CI/CD.'
+  );
+}
 </script>
 
 </body>
