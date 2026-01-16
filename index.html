@@ -62,10 +62,11 @@ a.btn, button.btn{
 
 /* 🔁 BOTÓN RE-EJECUTAR */
 .btn.rerun{
-  background:#E8F5E9;
-  color:#1B5E20;
-  border:1px solid #C8E6C9;
+  background:#FFE082;
+  color:#5D4037;
+  border:1px solid #FBC02D;
 }
+
 .btn.rerun:hover{
   background:#C8E6C9;
 }
@@ -189,10 +190,12 @@ fetch('executions/executions.json')
               📂 All
             </a>
 
-            <button class="btn rerun"
-                    onclick="showRerunInfo('${exec.suite}')">
-              🔁 Re-ejecutar suite
-            </button>
+            <a class="btn rerun"
+                href="https://github.com/JohanaGJuniper/QC-PMO-Dashboard/actions/workflows/run-katalon.yml"
+                target="_blank">
+                🔁 Reejecutar suite
+            </a>
+
           </div>
         `;
       });
