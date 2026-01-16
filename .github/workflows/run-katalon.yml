@@ -17,4 +17,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Mostrar suite seleccionada
-        run: echo "Suite seleccionada: ${{ github.event.inputs.suite }}"
+        run: |
+            echo "Suite seleccionada: ${{ github.event.inputs.suite }}"
+
